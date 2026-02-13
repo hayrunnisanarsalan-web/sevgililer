@@ -2,7 +2,10 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Sevgililer Günü 💖</title>
+<title>Sevgililer Günü</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -11,47 +14,58 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    font-family: 'Georgia', serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+    font-family: 'Playfair Display', serif;
     overflow: hidden;
-    color: white;
-    text-align: center;
 }
 
-/* Yazı Kutusu */
+/* Ana kutu */
 .container {
-    background: rgba(255,255,255,0.15);
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 0 0 30px rgba(255,255,255,0.3);
-    backdrop-filter: blur(10px);
+    background: white;
+    padding: 50px;
+    border-radius: 35px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+    text-align: center;
+    max-width: 650px;
+    border: 3px solid #f8bbd0;
 }
 
-/* Kalpler */
-.heart {
-    position: absolute;
-    color: rgba(255,255,255,0.7);
-    animation: float 6s linear infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(100vh) scale(1); opacity: 1; }
-    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-}
-
+/* Başlık */
 h1 {
-    font-size: 38px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #c2185b;
+    margin-bottom: 20px;
 }
 
-p {
+/* Yazı */
+.message {
+    font-size: 19px;
+    color: #6a1b4d;
+    line-height: 1.8;
+    padding: 20px;
+    border: 2px solid #f8bbd0;
+    border-radius: 20px;
+    background: #fff5fa;
+}
+
+/* Alt soru */
+.question {
+    margin-top: 25px;
     font-size: 20px;
-    max-width: 600px;
+    color: #ad1457;
 }
 
+/* Buton alanı */
+.buttons {
+    margin-top: 30px;
+    position: relative;
+}
+
+/* Butonlar */
 button {
-    padding: 12px 25px;
-    font-size: 18px;
+    padding: 12px 30px;
+    font-size: 16px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -60,17 +74,30 @@ button {
 }
 
 #yesBtn {
-    background: white;
-    color: #ff4e8b;
+    background: #ec407a;
+    color: white;
+}
+
+#yesBtn:hover {
+    background: #d81b60;
 }
 
 #noBtn {
-    background: #ff4e8b;
-    color: white;
+    background: #f8bbd0;
+    color: #880e4f;
     position: absolute;
 }
-iframe {
-    display: none;
+
+/* Kalp animasyonu */
+.heart {
+    position: absolute;
+    color: rgba(236,64,122,0.3);
+    animation: float 8s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
 }
 </style>
 </head>
@@ -78,66 +105,63 @@ iframe {
 <body>
 
 <div class="container">
-<h1>🐥😽 Sevgililer Günümüz Kutlu Olsun ayimmm🐻</h1>
+    <h1>Sevgililer Günümüz Kutlu Olsun</h1>
 
-<p>
-Sen hayatımın en güzel tesadüfü,  
-kalbimin en huzurlu yerisin.  
-Gülüşün bahar gibi,  
-Bu Sevgililer Günü'nde bir kez daha söylüyorum;  
-iyi ki varsın, iyi ki benimlesin 🩷
-veee ennn onemlisiii seni çoookk seviyorumm 😽
-</p>
+    <div class="message">
+        🩷Hayatıma kattığın huzur ve mutluluk için sana minnettarım.  
+        Kalbimde en özel yerde saklı. 🩷 
+        Bu özel günde sana bir kez daha söylemek istiyorum;  
+        iyi ki varsınnn, iyi ki benimlesin.
+        veee seniii cokkk seviyomm🐥😽
+    </div>
 
-<h2>Benimle sonsuza kadar olur musun? 💍</h2>
+    <div class="question">
+        Benimle her 14 Şubat'ta birlikte olmaya devam eder misin?
+    </div>
 
-<button id="yesBtn" onclick="romantikMesaj()">Evet 💕</button>
-<button id="noBtn">Hayır 💔</button>
+    <div class="buttons">
+        <button id="yesBtn" onclick="evetTiklandi()">Evet</button>
+        <button id="noBtn">Hayır</button>
+    </div>
 </div>
-
-<!-- YouTube müzik -->
-<iframe 
-src="https://www.youtube.com/embed/1jZzP6Zxw5c?autoplay=1&loop=1&playlist=1jZzP6Zxw5c"
-allow="autoplay">
-</iframe>
 
 <script>
 // Kaçan Hayır Butonu
 const noBtn = document.getElementById("noBtn");
 
 noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
+    const x = Math.random() * 300;
+    const y = Math.random() * 100;
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 });
 
-// Kalp oluşturma
+// Kalpler
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "❤";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    heart.style.fontSize = (Math.random() * 15 + 10) + "px";
     document.body.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, 6000);
+    }, 8000);
 }
 
-setInterval(createHeart, 300);
+setInterval(createHeart, 600);
 
-// Evet Butonu Mesajı
-function romantikMesaj(){
+// Evet ekranı
+function evetTiklandi(){
     document.body.innerHTML = `
-    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#ff758c,#ff7eb3);color:white;font-family:Georgia;text-align:center;flex-direction:column;">
-        <h1>💍 Sonsuza Kadar 💖</h1>
-        <p style="font-size:22px;max-width:600px;">
-        Kalbim artık sadece seninle atıyor.  
-        Hayatımın en güzel hikayesini seninle yazmak istiyorum.  
-        Her Sevgililer Günümüz böyle sevgi dolu olsun…  
-        Seni her şeyden çok seviyorum ❤️
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#fdf2f8,#fce7f3);font-family:'Playfair Display',serif;text-align:center;flex-direction:column;">
+        <h1 style="font-family:'Dancing Script';color:#c2185b;font-size:45px;">Sonsuza Kadar</h1>
+        <p style="max-width:600px;font-size:20px;color:#6a1b4d;line-height:1.8;">
+        O zaman söz veriyorum;  
+        her gülüşünde 
+        her mutsuzlugundaa huzununde yanında olucamm
+        ve seni her gün daha çok seveceğim.🩷🐻
         </p>
     </div>
     `;
