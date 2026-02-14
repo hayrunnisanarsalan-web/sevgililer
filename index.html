@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Soru</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@500&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -14,30 +14,38 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     overflow: hidden;
 }
 
 .container {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.97);
     padding: 60px;
-    border-radius: 35px;
+    border-radius: 40px;
     text-align: center;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
-    width: 400px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    width: 420px;
 }
 
 h1 {
-    font-size: 28px;
-    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 45px;
     color: #222;
+    letter-spacing: 2px;
+}
+
+.decor {
+    font-size: 18px;
+    color: #2a5298;
+    margin-bottom: 10px;
 }
 
 button {
-    padding: 15px 40px;
+    padding: 15px 45px;
     font-size: 18px;
     border: none;
-    border-radius: 50px;
+    border-radius: 60px;
     cursor: pointer;
     transition: 0.3s ease;
     margin: 10px;
@@ -45,27 +53,29 @@ button {
 }
 
 #yesBtn {
-    background: linear-gradient(45deg, #00c853, #69f0ae);
+    background: linear-gradient(45deg, #00b09b, #96c93d);
     color: white;
 }
 
 #noBtn {
-    background: linear-gradient(45deg, #ff1744, #ff8a80);
+    background: linear-gradient(45deg, #cb2d3e, #ef473a);
     color: white;
 }
 
 .floating {
     position: absolute;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 22px;
     animation: rise 2s ease forwards;
     pointer-events: none;
-    text-shadow: 0 0 10px rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255,255,255,0.7);
 }
 
 @keyframes rise {
     0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-200px); opacity: 0; }
+    100% { transform: translateY(-220px); opacity: 0; }
 }
 </style>
 </head>
@@ -73,7 +83,10 @@ button {
 <body>
 
 <div class="container">
-    <h1>Sen mal mısın? 😏</h1>
+    <div class="decor">✦ ───────── ✦</div>
+    <h1>Sen mal mısın?</h1>
+    <div class="decor">✦ ───────── ✦</div>
+
     <button id="yesBtn">Evet</button>
     <button id="noBtn">Hayır</button>
 </div>
@@ -94,11 +107,34 @@ noBtn.addEventListener("click", function() {
     yesScale += 0.15;
     yesBtn.style.transform = "scale(" + yesScale + ")";
 
-    const texts = ["He he kesin 😌✨", "Yok artık 💀", "İnanmam 😎🔥", "Belli zaten 😂"];
+    const texts = [
+        "✦ He he kesin ✦",
+        "─ İnanayım mı ─",
+        "✧ Doğru söyle ✧",
+        "◇ Emin misin ◇",
+        "≋ Ciddi ol ≋"
+    ];
+
     const randomText = texts[Math.floor(Math.random() * texts.length)];
 
     const span = document.createElement("div");
     span.classList.add("floating");
     span.innerText = randomText;
 
-    span.style.left = Math.random() * window        
+    span.style.left = Math.random() * window.innerWidth + "px";
+    span.style.top = (window.innerHeight - 120) + "px";
+
+    document.body.appendChild(span);
+
+    setTimeout(() => {
+        span.remove();
+    }, 2000);
+});
+
+yesBtn.addEventListener("click", function() {
+    alert("Bunu bekliyordum.");
+});
+</script>
+
+</body>
+</html>
