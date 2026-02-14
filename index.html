@@ -2,10 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Sevgililer Günü</title>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<title>Arkadaşlık Teklifi</title>
 
 <style>
 body {
@@ -14,58 +11,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #fdf2f8, #fce7f3);
-    font-family: 'Playfair Display', serif;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
     overflow: hidden;
 }
 
-/* Ana kutu */
 .container {
     background: white;
     padding: 50px;
-    border-radius: 35px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+    border-radius: 30px;
     text-align: center;
-    max-width: 650px;
-    border: 3px solid #f8bbd0;
-}
-
-/* Başlık */
-h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 40px;
-    color: #c2185b;
-    margin-bottom: 20px;
-}
-
-/* Yazı */
-.message {
-    font-size: 19px;
-    color: #6a1b4d;
-    line-height: 1.8;
-    padding: 20px;
-    border: 2px solid #f8bbd0;
-    border-radius: 20px;
-    background: #fff5fa;
-}
-
-/* Alt soru */
-.question {
-    margin-top: 25px;
-    font-size: 20px;
-    color: #ad1457;
-}
-
-/* Buton alanı */
-.buttons {
-    margin-top: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     position: relative;
 }
 
-/* Butonlar */
+h1 {
+    margin-bottom: 40px;
+}
+
 button {
-    padding: 12px 30px;
-    font-size: 16px;
+    padding: 15px 35px;
+    font-size: 18px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -74,30 +40,33 @@ button {
 }
 
 #yesBtn {
-    background: #ec407a;
+    background: #4CAF50;
     color: white;
 }
 
-#yesBtn:hover {
-    background: #d81b60;
-}
-
 #noBtn {
-    background: #f8bbd0;
-    color: #880e4f;
+    background: #ff4d6d;
+    color: white;
     position: absolute;
 }
 
-/* Kalp animasyonu */
-.heart {
+.floating-text {
     position: absolute;
-    color: rgba(236,64,122,0.3);
-    animation: float 8s linear infinite;
+    font-weight: bold;
+    color: white;
+    animation: floatUp 2s linear forwards;
+    pointer-events: none;
 }
 
-@keyframes float {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-10vh); opacity: 0; }
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
 }
 </style>
 </head>
@@ -105,67 +74,40 @@ button {
 <body>
 
 <div class="container">
-    <h1>Sevgililer Günümüz Kutlu Olsun</h1>
-
-    <div class="message">
-        🩷Hayatıma kattığın huzur ve mutluluk için sana minnettarım.  
-        Sen kalbimin en özel yerde saklısinn.🩷 
-        Bu özel gunde sana bir kez daha söylemek istiyorum;  
-        iyi ki varsınnn, iyi ki benimlesin.
-        veee seniii cokkk seviyomm🐥😽
-    </div>
-
-    <div class="question">
-        Benimle her 14 Şubat'ta birlikte olmaya devam eder misin?
-    </div>
-
-    <div class="buttons">
-        <button id="yesBtn" onclick="evetTiklandi()">Evet</button>
-        <button id="noBtn">Hayır</button>
-    </div>
+    <h1>sen mal misin?🤗</h1></h1>
+    <button id="yesBtn">Evet</button>
+    <button id="noBtn">Hayır</button>
 </div>
 
 <script>
-// Kaçan Hayır Butonu
 const noBtn = document.getElementById("noBtn");
 
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * 300;
-    const y = Math.random() * 100;
+noBtn.addEventListener("click", function() {
+
+    // Butonu rastgele yere kaçır
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-});
 
-// Kalpler
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 15 + 10) + "px";
-    document.body.appendChild(heart);
+    // Havadan yazı çıkar
+    const text = document.createElement("div");
+    text.classList.add("floating-text");
+    text.innerText = "He he kesin 😏";
+
+    text.style.left = x + "px";
+    text.style.top = y + "px";
+
+    document.body.appendChild(text);
 
     setTimeout(() => {
-        heart.remove();
-    }, 8000);
-}
+        text.remove();
+    }, 2000);
+});
 
-setInterval(createHeart, 600);
-
-// Evet ekranı
-function evetTiklandi(){
-    document.body.innerHTML = `
-    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#fdf2f8,#fce7f3);font-family:'Playfair Display',serif;text-align:center;flex-direction:column;">
-        <h1 style="font-family:'Dancing Script';color:#c2185b;font-size:45px;">Sonsuza Kadar</h1>
-        <p style="max-width:600px;font-size:20px;color:#6a1b4d;line-height:1.8;">
-        O zaman söz veriyorum;  
-        her gülüşünde 
-        her huzununde yanında olucamm
-        ve seni her gün daha çok seveceğim.🩷🐻
-        </p>
-    </div>
-    `;
-}
+document.getElementById("yesBtn").addEventListener("click", function() {
+    alert("Biliyordummm 😌");
+});
 </script>
 
 </body>
