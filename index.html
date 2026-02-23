@@ -1,139 +1,147 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Soru</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@500&display=swap" rel="stylesheet">
-
+<title>Maksimum Tatlılık 💕</title>
 <style>
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    overflow: hidden;
-}
-
-.container {
-    background: rgba(255,255,255,0.97);
-    padding: 60px;
-    border-radius: 40px;
     text-align: center;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-    width: 420px;
+    font-family: "Comic Sans MS", cursive;
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffdde1, #ff9a9e);
 }
 
-h1 {
-    font-family: 'Playfair Display', serif;
+h2 {
+    margin-top: 90px;
     font-size: 30px;
-    margin-bottom: 45px;
-    color: #222;
-    letter-spacing: 2px;
-}
-
-.decor {
-    font-size: 18px;
-    color: #2a5298;
-    margin-bottom: 10px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
 button {
-    padding: 15px 45px;
+    padding: 15px 30px;
+    margin: 15px;
     font-size: 18px;
     border: none;
-    border-radius: 60px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: 0.3s ease;
-    margin: 10px;
-    font-weight: 600;
+    transition: 0.3s;
 }
 
-#yesBtn {
-    background: linear-gradient(45deg, #00b09b, #96c93d);
+button:hover {
+    transform: scale(1.15);
+}
+
+.alkis {
+    background: #ff4b7d;
     color: white;
+    box-shadow: 0 0 20px #ff4b7d;
 }
 
-#noBtn {
-    background: linear-gradient(45deg, #cb2d3e, #ef473a);
-    color: white;
+.kac {
+    background: white;
+    color: #ff4b7d;
 }
 
-.floating {
-    position: absolute;
-    font-weight: bold;
+#sonuc {
+    margin-top: 20px;
     font-size: 22px;
-    animation: rise 2s ease forwards;
-    pointer-events: none;
-    letter-spacing: 1px;
     color: white;
-    text-shadow: 0 0 15px rgba(255,255,255,0.7);
 }
 
-@keyframes rise {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-220px); opacity: 0; }
+/* Kalp animasyonu */
+.heart {
+    position: absolute;
+    color: #ff4b7d;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh); opacity: 1;}
+    100% {transform: translateY(-10vh); opacity: 0;}
+}
+
+/* Yazı düşme animasyonu */
+.loveText {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    0% {transform: translateY(-10vh); opacity: 1;}
+    100% {transform: translateY(100vh); opacity: 0;}
+}
+
+/* Pembe patlama efekti */
+.flash {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,105,180,0.4);
+    top: 0;
+    left: 0;
+    animation: fade 0.5s forwards;
+}
+
+@keyframes fade {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
-    <div class="decor">✦ ───────── ✦</div>
-    <h1>Sen mal mısın?</h1>
-    <div class="decor">✦ ───────── ✦</div>
+<h2>Karını seviyorsan alkışlaaa 👏💕</h2>
 
-    <button id="yesBtn">Evet</button>
-    <button id="noBtn">Hayır</button>
-</div>
+<button class="alkis" onclick="alkis()">Alkışla 👏💖</button>
+<button class="kac" onclick="kac()">Alkışlamam 😜</button>
+
+<p id="sonuc"></p>
 
 <script>
-let yesScale = 1;
-let noScale = 1;
+function alkis() {
+    document.getElementById("sonuc").innerHTML = "Ayyy dünyalar tatlısııı 💕💘💖";
 
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
+    // Pembe patlama
+    const flash = document.createElement("div");
+    flash.classList.add("flash");
+    document.body.appendChild(flash);
+    setTimeout(() => flash.remove(), 500);
 
-noBtn.addEventListener("click", function() {
+    // Yazı yağmuru
+    for(let i = 0; i < 10; i++) {
+        createLoveText();
+    }
+}
 
-    noScale -= 0.15;
-    if(noScale < 0.4) noScale = 0.4;
-    noBtn.style.transform = "scale(" + noScale + ")";
+function kac() {
+    document.getElementById("sonuc").innerHTML = "Yapmaaa kalbim dayanmıyo 😭💔";
+}
 
-    yesScale += 0.15;
-    yesBtn.style.transform = "scale(" + yesScale + ")";
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+}
 
-    const texts = [
-        "✦ He he kesin ✦",
-        "─ İnanayım mı ─",
-        "✧ Doğru söyle ✧",
-        "◇ Emin misin ◇",
-        "≋ Ciddi ol ≋"
-    ];
+function createLoveText() {
+    const text = document.createElement("div");
+    text.classList.add("loveText");
+    text.innerHTML = "Seni çooook seviyorum 💕";
+    text.style.left = Math.random() * 100 + "vw";
+    text.style.fontSize = Math.random() * 10 + 18 + "px";
+    document.body.appendChild(text);
+    setTimeout(() => text.remove(), 4000);
+}
 
-    const randomText = texts[Math.floor(Math.random() * texts.length)];
-
-    const span = document.createElement("div");
-    span.classList.add("floating");
-    span.innerText = randomText;
-
-    span.style.left = Math.random() * window.innerWidth + "px";
-    span.style.top = (window.innerHeight - 120) + "px";
-
-    document.body.appendChild(span);
-
-    setTimeout(() => {
-        span.remove();
-    }, 2000);
-});
-
-yesBtn.addEventListener("click", function() {
-    alert("Bunu bekliyordum.");
-});
+setInterval(createHeart, 300);
 </script>
 
 </body>
