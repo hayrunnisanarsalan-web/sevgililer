@@ -2,87 +2,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Tatlı Sürpriz 💚</title>
+<title>Tatlı 💚</title>
 <style>
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #ffe6f0, #ffd6ec);
-    font-family: Arial, sans-serif;
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+background:pink;
+font-family:Arial;
 }
 
-.container {
-    background-color: #a8e6a3;
-    padding: 40px;
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    width: 300px;
+.kutu{
+background:#9be89b;
+padding:40px;
+border-radius:20px;
+text-align:center;
 }
 
-h2 {
-    margin-bottom: 20px;
-}
-
-.bears {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 8px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.1);
-}
-
-.yes {
-    background-color: #4caf50;
-    color: white;
-}
-
-.no {
-    background-color: white;
-    color: #4caf50;
-}
-
-#sonuc {
-    margin-top: 15px;
-    font-weight: bold;
+button{
+margin:10px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="bears">🧸💚🧸</div>
-    <h2>Karını seviyorsan alkışla 👏</h2>
+<div class="kutu">
+<div style="font-size:40px;">🧸🧸🧸</div>
+<h2>Karını seviyorsan alkışla 👏</h2>
 
-    <button class="yes" onclick="evet()">Alkışla 👏</button>
-    <button class="no" onclick="hayir()">Alkışlamam 😅</button>
+<button onclick="document.getElementById('yazi').innerText='ADAM OL💚'">Alkışla</button>
 
-    <p id="sonuc"></p>
+<button onclick="document.getElementById('yazi').innerText='ORUSPUMUSUN 🥺'">Alkışlamam</button>
+
+<p id="yazi"></p>
 </div>
-
-<script>
-function evet() {
-    document.getElementById("sonuc").innerHTML = "YAAA SAPSIKKK ORUSPUU💚🧸";
-}
-
-function hayir() {
-    document.getElementById("sonuc").innerHTML = "ÖKÜZMUSUN 🥺";
-}
-</script>
 
 </body>
 </html>
