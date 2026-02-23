@@ -2,146 +2,86 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Maksimum Tatlılık 💕</title>
+<title>Tatlı Sürpriz 💚</title>
 <style>
 body {
-    text-align: center;
-    font-family: "Comic Sans MS", cursive;
     margin: 0;
-    overflow: hidden;
-    background: linear-gradient(135deg, #ffdde1, #ff9a9e);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffe6f0, #ffd6ec);
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: #a8e6a3;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 300px;
 }
 
 h2 {
-    margin-top: 90px;
-    font-size: 30px;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+
+.bears {
+    font-size: 40px;
+    margin-bottom: 15px;
 }
 
 button {
-    padding: 15px 30px;
-    margin: 15px;
-    font-size: 18px;
+    padding: 10px 20px;
+    margin: 8px;
     border: none;
-    border-radius: 30px;
+    border-radius: 15px;
     cursor: pointer;
+    font-size: 15px;
     transition: 0.3s;
 }
 
 button:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
-.alkis {
-    background: #ff4b7d;
+.yes {
+    background-color: #4caf50;
     color: white;
-    box-shadow: 0 0 20px #ff4b7d;
 }
 
-.kac {
-    background: white;
-    color: #ff4b7d;
+.no {
+    background-color: white;
+    color: #4caf50;
 }
 
 #sonuc {
-    margin-top: 20px;
-    font-size: 22px;
-    color: white;
-}
-
-/* Kalp animasyonu */
-.heart {
-    position: absolute;
-    color: #ff4b7d;
-    animation: float 4s linear infinite;
-}
-
-@keyframes float {
-    0% {transform: translateY(100vh); opacity: 1;}
-    100% {transform: translateY(-10vh); opacity: 0;}
-}
-
-/* Yazı düşme animasyonu */
-.loveText {
-    position: absolute;
-    color: white;
+    margin-top: 15px;
     font-weight: bold;
-    animation: fall 4s linear forwards;
-}
-
-@keyframes fall {
-    0% {transform: translateY(-10vh); opacity: 1;}
-    100% {transform: translateY(100vh); opacity: 0;}
-}
-
-/* Pembe patlama efekti */
-.flash {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,105,180,0.4);
-    top: 0;
-    left: 0;
-    animation: fade 0.5s forwards;
-}
-
-@keyframes fade {
-    from {opacity: 1;}
-    to {opacity: 0;}
 }
 </style>
 </head>
 <body>
 
-<h2>Karını seviyorsan alkışlaaa 👏💕</h2>
+<div class="container">
+    <div class="bears">🧸💚🧸</div>
+    <h2>Karını seviyorsan alkışla 👏</h2>
 
-<button class="alkis" onclick="alkis()">Alkışla 👏💖</button>
-<button class="kac" onclick="kac()">Alkışlamam 😜</button>
+    <button class="yes" onclick="evet()">Alkışla 👏</button>
+    <button class="no" onclick="hayir()">Alkışlamam 😅</button>
 
-<p id="sonuc"></p>
+    <p id="sonuc"></p>
+</div>
 
 <script>
-function alkis() {
-    document.getElementById("sonuc").innerHTML = "Ayyy dünyalar tatlısııı 💕💘💖";
-
-    // Pembe patlama
-    const flash = document.createElement("div");
-    flash.classList.add("flash");
-    document.body.appendChild(flash);
-    setTimeout(() => flash.remove(), 500);
-
-    // Yazı yağmuru
-    for(let i = 0; i < 10; i++) {
-        createLoveText();
-    }
+function evet() {
+    document.getElementById("sonuc").innerHTML = "Ayyy en tatlı sensin 💚🧸";
 }
 
-function kac() {
-    document.getElementById("sonuc").innerHTML = "Yapmaaa kalbim dayanmıyo 😭💔";
+function hayir() {
+    document.getElementById("sonuc").innerHTML = "Eyvahhh kalbim kırıldı 🥺";
 }
-
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 20 + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
-}
-
-function createLoveText() {
-    const text = document.createElement("div");
-    text.classList.add("loveText");
-    text.innerHTML = "Seni çooook seviyorum 💕";
-    text.style.left = Math.random() * 100 + "vw";
-    text.style.fontSize = Math.random() * 10 + 18 + "px";
-    document.body.appendChild(text);
-    setTimeout(() => text.remove(), 4000);
-}
-
-setInterval(createHeart, 300);
 </script>
 
 </body>
